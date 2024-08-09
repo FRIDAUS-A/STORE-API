@@ -4,7 +4,7 @@ const Product = require('../models/Product')
 const getAllProductsStatic = async (req, res) => {
 	//const search = 'aa'
 	const products = await Product.find({ price: {$gt: 30} }).sort('name').select('name price').limit(4).skip(1)
-	res.status(200).json({nbHits: products.length, products: products})
+	res.status(200).json({Amount: products.length, products: products})
 }
 
 const getAllProducts = async (req, res) => {
@@ -60,6 +60,6 @@ const getAllProducts = async (req, res) => {
 		//console.log(queryObject)
 	}
 	const products = await result.find(queryObject)
-	res.status(200).json({products, length: products.length})
+	res.status(200).json({products, Amount: products.length})
 }
 module.exports ={getAllProductsStatic, getAllProducts}
